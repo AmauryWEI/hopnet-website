@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -51,8 +52,6 @@
 </head>
 
 <body>
-
-
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -132,16 +131,15 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <image class="blend-img-background center-image" src="static/images/method_overview.png"
-          alt="HOPNet method overview" style="max-width: 100%; height: auto">
+        <image class="blend-img-background center" src="static/images/method_overview.png" alt="HOPNet method overview"
+          style="max-width: 90%; height: auto">
           <br>
-          <h2 class="subtitle has-text-centered">
-            <strong>Overview of our method.</strong> (<strong>a</strong>) Autoregressive rollout approach; (<strong>b</strong>) 
-            Physics-informed message-passing strategy.
-            Our sequential message-passing is inspired by Newtonian laws and tailored to process collisions. It first
-            processes ongoing collisions (steps 1, 2, and 3) and then updates individual objects (steps 4 and 5).
-            Finally, the per-node and per-object accelerations are computed (step 6) and the final object poses are 
-            obtained (step 7) with shape matching.
+          <h2 class="subtitle is-5 has-text-justified">
+            <strong>Overview of HOPNet.</strong> (<strong>a</strong>) Autoregressive rollout approach;
+            (<strong>b</strong>) Physics-informed message-passing strategy. Our sequential message-passing is inspired
+            by Newtonian laws and tailored to process collisions. It first processes ongoing collisions (steps 1, 2, and
+            3) and then updates individual objects (steps 4 and 5). Finally, the per-node and per-object accelerations
+            are computed (step 6) and the final object poses are obtained (step 7) with shape matching.
           </h2>
       </div>
     </div>
@@ -176,120 +174,148 @@
   </section>
   <!-- End paper abstract -->
 
-
-  <!-- Image carousel -->
-  <section class="hero is-small">
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/carousel1.jpg" alt="MY ALT TEXT" />
-            <h2 class="subtitle has-text-centered">
-              First image description.
-            </h2>
-          </div>
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/carousel2.jpg" alt="MY ALT TEXT" />
-            <h2 class="subtitle has-text-centered">
-              Second image description.
-            </h2>
-          </div>
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/carousel3.jpg" alt="MY ALT TEXT" />
-            <h2 class="subtitle has-text-centered">
-              Third image description.
-            </h2>
-          </div>
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/carousel4.jpg" alt="MY ALT TEXT" />
-            <h2 class="subtitle has-text-centered">
-              Fourth image description.
-            </h2>
+  <!-- Combinatorial complex representation -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Rigid Body Scenes as Combinatorial Complexes</h2>
+            <p class="has-text-justified">
+              Traditional graph-based simulators represent rigid-body scenes using basic node and edge connections,
+              which often overlook the structure of mesh surfaces and the integrity of individual objects. Our method
+              introduces a more expressive representation by modeling the environment as a Combinatorial Complex—a
+              hierarchical structure that explicitly encodes nodes, mesh triangles, object identities, and collisions.
+              This higher-order approach preserves both geometry and physics, enabling more accurate modeling of
+              rigid-body interactions. By processing sequences of these structures over time, our model can predict
+              future object states through autoregressive rollouts.
+            </p>
+            <br>
+            <image class="blend-img-background center" src="static/images/rollout_representations.png"
+              alt="Rigid body scenes as combinatorial complexes" style="max-width: 90%; height: auto">
+              <p>
+                <strong>Spatiotemporal combinatorial complexes.</strong> (<strong>a</strong>) Real-world observations
+                are represented by (<strong>b</strong>) spatiotemporal combinatorial complexes. The topology and
+                features of each combinatorial complex evolve over time to accurately represent the environment.
+              </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End image carousel -->
+  <!-- End combinatorial complex representation -->
 
-
-
-
-  <!-- Youtube video -->
-  <section class="hero is-small is-light">
-    <div class="hero-body">
-      <div class="container">
-        <!-- Paper video. -->
-        <h2 class="title is-3">Video Presentation</h2>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-
-            <div class="publication-video">
-              <!-- Youtube embed code here -->
-              <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media"
-                allowfullscreen></iframe>
-            </div>
+  <!-- Physics-informed message-passing -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Physics-informed Message-passing</h2>
+            <p class="has-text-justified">
+              HOPNet introduces a physics-informed message-passing framework that mirrors how forces and collisions
+              propagate in the real world. Instead of relying on generic node-to-node communication, our model exchanges
+              learnable messages along structured pathways defined by Newtonian principles, using a higher-order
+              representation of the scene. This approach improves accuracy, efficiency, and interpretability by
+              explicitly modeling energy and momentum transfer during collisions. Combined with a second-order
+              integrator and shape-matching for object-level updates, HOPNet produces stable and realistic rollouts of
+              complex rigid body interactions.
+            </p>
+            <image class="blend-img-background center" src="static/images/message_passing.png"
+              alt="Physics-informed message-passing" style="max-width: 80%; height: auto">
+              <p>
+                <strong>Physics-informed message-passing.</strong> (<strong>a</strong>) Enhancing mesh face cells
+                embeddings with nodes, edges, and object cells; <br>(<strong>b</strong>) Computing the effect of a
+                collision from two mesh faces <math>
+                  <mi>s</mi>
+                </math> and <math>
+                  <mi>r</mi>
+                </math> on each other; (<strong>c</strong>) Updating triangles <math>
+                  <mi>s</mi>
+                </math> and <math>
+                  <mi>r</mi>
+                </math>
+                after collisions.
+              </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End youtube video -->
+  <!-- End physics-informed message-passing -->
 
-
-  <!-- Video carousel -->
+  <!-- Results -->
   <section class="hero is-small">
     <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-3">Another Carousel</h2>
-        <div id="results-carousel" class="carousel results-carousel">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Results</h2>
+        <p class="has-text-justified">
+          We evaluate HOPNet on four progressively complex datasets (MOVi-spheres, MOVi-A, MOVi-B, MOVi-C) involving
+          realistic 3D object collisions, demonstrating superior accuracy over existing graph-based simulators. Our
+          model produces stable long-term rollouts and maintains low error over time, outperforming prior methods like
+          FIGNet and MeshGraphNet by a large margin. HOPNet also generalizes well to unseen object geometries—even when
+          trained only on simple shapes—thanks to its physics-informed architecture and topological representation.
+          Additional experiments show that exposure to diverse, dynamic collisions during training significantly
+          improves generalization, highlighting the model’s robustness.
+        </p>
+        <div id="results-carousel" class="carousel results-carousel center" style="max-width: 100%; height: auto">
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/main_results.png" alt="Main results" style="max-width: 85%; height: auto"
+              class="center" />
+            <p class="subtitle is-6 has-text-justified">
+              <strong>Autoregressive rollout performance on benchmark datasets.</strong> (<strong>a</strong>)
+              Translation and (<strong>b</strong>) orientation errors after a rollout horizon of 50 steps on all dynamic
+              objects in the scene. Error bars indicate the mean and standard deviation across three independent random
+              seeds.
+            </p>
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/generalization_with_distribution.png" alt="Generalization results" />
+            <h2 class="subtitle is-6 has-text-justified">
+              <strong>Generalization performance of HOPNet.</strong> </strong> (<strong>a</strong>) Translation and
+              </strong> (<strong>b</strong>) orientation errors after 50 rollout steps of three different models (S, A,
+              and B) trained on MOVi-spheres, MOVi-A, and MOVi-B respectively. Error bars indicate the mean and standard
+              deviation across three independent random seeds. (<strong>c</strong>) Distribution of the collision
+              velocities encountered by each model during training.
+            </h2>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- End results -->
+
+  <!-- Rollout videos -->
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Rollout Videos</h2>
+        <div id="rollout-carousel" class="carousel rollout-carousel center" style="max-width: 100%; height: auto">
           <div class="item item-video1">
-            <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <video poster="" id="video1" autoplay controls muted loop width="48%">
+              <!-- Your video file here -->
+              <source src="static/videos/carousel1.mp4" type="video/mp4">
+            </video>
+            <video poster="" id="video2" autoplay controls muted loop width="48%">
               <!-- Your video file here -->
               <source src="static/videos/carousel1.mp4" type="video/mp4">
             </video>
           </div>
           <div class="item item-video2">
-            <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <video poster="" id="video1" autoplay controls muted loop width="48%">
+              <!-- Your video file here -->
+              <source src="static/videos/carousel2.mp4" type="video/mp4">
+            </video>
+            <video poster="" id="video2" autoplay controls muted loop width="48%">
               <!-- Your video file here -->
               <source src="static/videos/carousel2.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="item item-video3">
-            <video poster="" id="video3" autoplay controls muted loop height="100%">\
-              <!-- Your video file here -->
-              <source src="static/videos/carousel3.mp4" type="video/mp4">
-            </video>
-          </div>
         </div>
       </div>
-    </div>
   </section>
-  <!-- End video carousel -->
-
-
-
-
-
-
-  <!-- Paper poster -->
-  <!-- <section class="hero is-small is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title">Poster</h2>
-
-        <iframe src="static/pdfs/sample.pdf" width="100%" height="550">
-        </iframe>
-
-      </div>
-    </div>
-  </section> -->
-  <!--End paper poster -->
-
+  <!-- End rollout videos -->
 
   <!--BibTex citation -->
   <section class="section" id="BibTeX">
