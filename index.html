@@ -199,7 +199,6 @@
               rigid-body interactions. By processing sequences of these structures over time, our model can predict
               future object states through autoregressive rollouts.
             </p>
-            <br>
             <image class="blend-img-background center" src="static/images/rollout_representations.png"
               alt="Rigid body scenes as combinatorial complexes" style="max-width: 90%; height: auto">
               <p>
@@ -258,7 +257,7 @@
     <div class="hero-body">
       <div class="container is-max-desktop">
         <h2 class="title is-3">Results</h2>
-        <p class="has-text-justified">
+        <p class="has-text-justified" style="margin-bottom: 1rem;">
           We evaluate HOPNet on four progressively complex datasets (MOVi-spheres, MOVi-A, MOVi-B, MOVi-C) involving
           realistic 3D object collisions, demonstrating superior accuracy over existing graph-based simulators. Our
           model produces stable long-term rollouts and maintains low error over time, outperforming prior methods like
@@ -267,8 +266,8 @@
           Additional experiments show that exposure to diverse, dynamic collisions during training significantly
           improves generalization, highlighting the model’s robustness.
         </p>
-        <div id="results-carousel" class="carousel results-carousel center" style="max-width: 100%; height: auto">
-          <div class="item">
+        <div id="results-carousel" class="carousel results-carousel center" style="max-width: 100%; height: auto;">
+          <div class="item" style="margin: 0; padding: 0;">
             <!-- Your image here -->
             <img src="static/images/main_results.png" alt="Main results" style="max-width: 90%; height: auto"
               class="center" />
@@ -279,7 +278,7 @@
               seeds.
             </p>
           </div>
-          <div class="item">
+          <div class="item" style="margin: 0; padding: 0;">
             <!-- Your image here -->
             <img src="static/images/generalization_with_distribution.png" alt="Generalization results" />
             <h2 class="subtitle is-6 has-text-justified">
