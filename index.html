@@ -261,7 +261,7 @@
         <div id="results-carousel" class="carousel results-carousel center" style="max-width: 100%; height: auto">
           <div class="item">
             <!-- Your image here -->
-            <img src="static/images/main_results.png" alt="Main results" style="max-width: 85%; height: auto"
+            <img src="static/images/main_results.png" alt="Main results" style="max-width: 90%; height: auto"
               class="center" />
             <p class="subtitle is-6 has-text-justified">
               <strong>Autoregressive rollout performance on benchmark datasets.</strong> (<strong>a</strong>)
@@ -291,26 +291,47 @@
     <div class="hero-body">
       <div class="container is-max-desktop">
         <h2 class="title is-3">Rollout Videos</h2>
-        <div id="rollout-carousel" class="carousel rollout-carousel center" style="max-width: 100%; height: auto">
-          <div class="item item-video1">
-            <video poster="" id="video1" autoplay controls muted loop width="48%">
+        <p class="has-text-justified">
+          We show multiple autoregressive rollout videos showing HOPNet's predictions over 240 rollout timesteps
+          alongside ground-truth trajectories across several trajectories. The videos are played back at 50% speed to
+          improve visibility of the dynamics.
+        </p>
+        <div id="rollouts-carousel" class="carousel rollouts-carousel center" style="max-width: 100%; height: auto">
+          <div class="carousel-item center">
+            <video poster="" id="movis2_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
-              <source src="static/videos/carousel1.mp4" type="video/mp4">
+              <source src="static/videos/movis2_ground_truth.mp4" type="video/mp4">
             </video>
-            <video poster="" id="video2" autoplay controls muted loop width="48%">
+            <video poster="" id="movis2_hopnet" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
-              <source src="static/videos/carousel1.mp4" type="video/mp4">
+              <source src="static/videos/movis2_hopnet.mp4" type="video/mp4">
             </video>
+            <div style="float: left; width: 50%; text-align: center;">MOVi-spheres sample 2</div>
+            <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
-          <div class="item item-video2">
-            <video poster="" id="video1" autoplay controls muted loop width="48%">
+          <div class="carousel-item center">
+            <video poster="" id="movia2_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
-              <source src="static/videos/carousel2.mp4" type="video/mp4">
+              <source src="static/videos/movia2_ground_truth.mp4" type="video/mp4">
             </video>
-            <video poster="" id="video2" autoplay controls muted loop width="48%">
+            <video poster="" id="movia_hopnet" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
-              <source src="static/videos/carousel2.mp4" type="video/mp4">
+              <source src="static/videos/movia2_hopnet.mp4" type="video/mp4">
             </video>
+            <div style="float: left; width: 50%; text-align: center;">MOVi-A sample 2</div>
+            <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
+          </div>
+          <div class="carousel-item center">
+            <video poster="" id="movib2_ground_truth" autoplay controls muted loop width="49%">
+              <!-- Your video file here -->
+              <source src="static/videos/movib2_ground_truth.mp4" type="video/mp4">
+            </video>
+            <video poster="" id="movib_hopnet" autoplay controls muted loop width="49%">
+              <!-- Your video file here -->
+              <source src="static/videos/movib2_hopnet.mp4" type="video/mp4">
+            </video>
+            <div style="float: left; width: 50%; text-align: center;">MOVi-B sample 2</div>
+            <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
         </div>
       </div>
@@ -332,22 +353,17 @@
   <!--End BibTex citation -->
 
 
-  <footer class="footer">
+  <footer class="footer" style="padding-top: 0; padding-bottom: 0;">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-8">
           <div class="content">
-
             <p>
               This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                target="_blank">Academic Project Page Template</a> which was adopted from the <a
-                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-              You are free to borrow the source code of this website, we just ask that you link back to this page in the
-              footer. <br> This website is licensed under a <a rel="license"
+                target="_blank">Academic Project Page Template</a>. This website is licensed under a <a rel="license"
                 href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
                 Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
-
           </div>
         </div>
       </div>
