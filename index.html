@@ -26,7 +26,8 @@
   <meta property="og:image:height" content="630" />
 
 
-  <meta name="twitter:title" content="Integrating Physics and Topology in Neural Networks for Learning Rigid Body Dynamics">
+  <meta name="twitter:title"
+    content="Integrating Physics and Topology in Neural Networks for Learning Rigid Body Dynamics">
   <meta name="twitter:description" content="Presentation of a Machine Learning algorithm named HOPNet">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
   <meta name="twitter:image" content="static/images/twitter_banner.png">
@@ -46,7 +47,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" >
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
@@ -301,8 +302,9 @@
           improve visibility of the dynamics.
         </p>
         <div id="rollouts-carousel" class="carousel rollouts-carousel center" style="max-width: 100%; height: auto">
-          <div class="carousel-item center">
-            <video poster="" id="movis2_ground_truth" autoplay controls muted loop width="49%">
+          <div class="carousel-item center" style="text-align: center;">
+            <video poster="" id="movis2_ground_truth" autoplay controls muted loop width="49%"
+              style="text-align: center;">
               <!-- Your video file here -->
               <source src="static/videos/movis2_ground_truth.mp4" type="video/mp4">
             </video>
@@ -313,7 +315,7 @@
             <div style="float: left; width: 50%; text-align: center;">MOVi-spheres sample 2</div>
             <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
-          <div class="carousel-item center">
+          <div class="carousel-item center" style="text-align: center;">
             <video poster="" id="movia2_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
               <source src="static/videos/movia2_ground_truth.mp4" type="video/mp4">
@@ -325,7 +327,7 @@
             <div style="float: left; width: 50%; text-align: center;">MOVi-A sample 2</div>
             <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
-          <div class="carousel-item center">
+          <div class="carousel-item center" style="text-align: center;">
             <video poster="" id="movia6_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
               <source src="static/videos/movia6_ground_truth.mp4" type="video/mp4">
@@ -337,7 +339,7 @@
             <div style="float: left; width: 50%; text-align: center;">MOVi-A sample 6</div>
             <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
-          <div class="carousel-item center">
+          <div class="carousel-item center" style="text-align: center;">
             <video poster="" id="movia21_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
               <source src="static/videos/movia21_ground_truth.mp4" type="video/mp4">
@@ -349,7 +351,7 @@
             <div style="float: left; width: 50%; text-align: center;">MOVi-A sample 21</div>
             <div style="float: right; width: 50%; text-align: center;">HOPNet predictions</div>
           </div>
-          <div class="carousel-item center">
+          <div class="carousel-item center" style="text-align: center;">
             <video poster="" id="movib2_ground_truth" autoplay controls muted loop width="49%">
               <!-- Your video file here -->
               <source src="static/videos/movib2_ground_truth.mp4" type="video/mp4">
@@ -365,6 +367,72 @@
       </div>
   </section>
   <!-- End rollout videos -->
+
+  <!-- Counterfactual videos -->
+  <section class="hero is-small" id="counterfactual">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Counterfactual Reasoning</h2>
+        <p class="has-text-justified">
+          HOPNet supports robust counterfactual reasoning by accurately simulating how a scene evolves under
+          hypothetical changes—such as altering object positions, velocities, or removing elements entirely. Unlike
+          traditional models that struggle with long-term predictions under novel conditions, HOPNet maintains high
+          accuracy even in out-of-distribution scenarios and exceeds prior methods by over 50% in rollout duration at
+          comparable error levels. This makes it especially well-suited for applications in planning, analysis, and
+          decision-making. Below, we provide an interactive demo where you can remove an object from a scene and view
+          HOPNet’s predicted outcomes in response.
+        </p><br>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+          <div style="text-align: center;">
+            MOVi-A sample 6
+          </div>
+          <div class="radios" style="text-align: center; justify-content: space-between; margin: 0% 10% 0% 10%;">
+            <label class="radio"><input type="radio" name="object_to_remove" value="0" checked />0</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="1" />1</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="2" />2</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="3" />3</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="4" />4</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="5" />5</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="6" />6</label>
+            <label class="radio"><input type="radio" name="object_to_remove" value="7" />7</label>
+          </div>
+        </div>
+        <div style="max-width: 49%; float: left;">
+          <video poster="" id="counterfactual_ground_truth" autoplay controls muted loop width="100%">
+            <source src="static/videos/movia6_ground_truth.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div style="max-width: 49%; float: right;">
+          <video poster="" class="obj0 selectt" autoplay controls muted loop width="100%">
+            <source src="static/videos/obj0_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj1 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj1_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj2 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj2_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj3 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj3_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj4 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj4_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj5 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj5_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj6 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj6_removed.mp4" type="video/mp4">
+          </video>
+          <video poster="" class="obj7 selectt" autoplay controls muted loop width="100%" style="display: none;">
+            <source src="static/videos/obj7_removed.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- End counterfactual videos -->
 
   <!--BibTex citation -->
   <section class="section" id="bibtex">
